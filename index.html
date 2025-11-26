@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Devakirubai G | Full-Stack Developer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of Devakirubai G, an upcoming full-stack developer skilled in MERN and MEAN stacks." />
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-alt: #020617;
+      --accent: #6366f1;
+      --accent-soft: rgba(99, 102, 241, 0.18);
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --card: #020617;
+      --card-alt: #020617;
+      --border: #1f2937;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, #111827 0, #020617 35%, #020617 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+
+    /* HEADER / NAV */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(
+        to bottom,
+        rgba(2, 6, 23, 0.96),
+        rgba(2, 6, 23, 0.7)
+      );
+      border-bottom: 1px solid rgba(15,23,42,0.9);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.7rem 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 2.5rem;
+      align-items: center;
+      padding: 3.2rem 0 2.2rem;
+    }
+
+    .hero-subtitle {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 3.6vw, 2.9rem);
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title span {
+      color: var(--accent);
+    }
+
+    .hero-text {
+      color: var(--muted);
+      font-size: 0.98rem;
+      max-width: 34rem;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1.25rem 0 1.75rem;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(15,23,42,0.85);
+      color: var(--muted);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+
+    .btn {
+      padding: 0.65rem 1.4rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      text-decoration: none;
+      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease, border-color 0.1s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: white;
+      box-shadow: 0 12px 30px rgba(79,70,229,0.45);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 38px rgba(79,70,229,0.6);
+    }
+
+    .btn-ghost {
+      border-color: var(--border);
+      background: rgba(15,23,42,0.85);
+      color: var(--muted);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15,23,42,1);
+      color: var(--text);
+      border-color: rgba(55,65,81,1);
+    }
+
+    /* HERO RIGHT: PHOTO + CARD */
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .photo-wrapper {
+      position: relative;
+      width: 220px;
+      height: 220px;
+      border-radius: 999px;
+      padding: 3px;
+      background:
+        conic-gradient(from 160deg, #6366f1, #8b5cf6, #22d3ee, #6366f1);
+      box-shadow: 0 18px 40px rgba(15,23,42,0.95);
+    }
+
+    .photo-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      background: radial-gradient(circle at top, #020617, #020617);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .profile-pic {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+      filter: saturate(1.05) contrast(1.05);
+    }
+
+    .hero-small-card {
+      border-radius: 1rem;
+      border: 1px solid var(--border);
+      background: radial-gradient(circle at top left, var(--accent-soft), var(--card));
+      padding: 0.9rem 1.1rem;
+      font-size: 0.85rem;
+      width: 100%;
+    }
+
+    .hero-small-card p {
+      color: var(--muted);
+    }
+
+    .hero-small-card strong {
+      color: var(--text);
+    }
+
+    /* SECTIONS */
+    .section {
+      padding: 2.4rem 0 1.3rem;
+      border-top: 1px solid rgba(15,23,42,0.9);
+    }
+
+    .section-title {
+      font-size: 1.05rem;
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.4fr);
+      gap: 1.5rem;
+    }
+
+    .card {
+      border-radius: 1rem;
+      border: 1px solid var(--border);
+      background: var(--card-alt);
+      padding: 1rem 1.2rem;
+      font-size: 0.9rem;
+      box-shadow: 0 18px 45px rgba(15,23,42,0.9);
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.55rem;
+    }
+
+    .pill {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.95);
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .project-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .project-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.45rem;
+    }
+
+    .project-links {
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    /* TIMELINE */
+    .timeline {
+      border-left: 1px solid var(--border);
+      padding-left: 1rem;
+      margin-left: 0.25rem;
+    }
+
+    .timeline-item {
+      margin-bottom: 0.9rem;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -1.15rem;
+      top: 0.25rem;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(99,102,241,0.25);
+    }
+
+    .timeline-title {
+      font-size: 0.95rem;
+    }
+
+    .timeline-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+
+    /* CONTACT / FOOTER */
+    footer {
+      padding: 1.75rem 0 2.25rem;
+      border-top: 1px solid rgba(15,23,42,1);
+      color: var(--muted);
+      font-size: 0.85rem;
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-right {
+        order: -1;
+      }
+
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 2.6rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links {
+        display: none;
+      }
+
+      .container {
+        padding: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header>
+    <nav class="nav">
+      <div class="logo">DEVAKI<span>RUBAI</span></div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div>
+        <p class="hero-subtitle">FULL-STACK WEB DEVELOPER • MERN & MEAN</p>
+        <h1 class="hero-title">
+          Hi, I'm <span>Devakirubai</span>.<br />
+          I build full-stack web applications.
+        </h1>
+        <p class="hero-text">
+          Upcoming full-stack developer with hands-on experience in building web applications using
+          <strong>React, Angular, Node.js, Express, and MongoDB</strong>. I enjoy converting real-world
+          problems into clean, scalable solutions and constantly improving through projects, hackathons,
+          and collaboration.
+        </p>
+
+        <div class="hero-tags">
+          <span class="tag">MERN & MEAN Stack</span>
+          <span class="tag">REST APIs</span>
+          <span class="tag">SaaS & Web Apps</span>
+          <span class="tag">Problem Solving</span>
+        </div>
+
+        <div class="cta-row">
+          <a href="#projects" class="btn btn-primary">View My Projects →</a>
+          <a href="mailto:devakirubai.g@outlook.com" class="btn btn-ghost">Contact Me</a>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDE: PHOTO + CARD -->
+      <aside class="hero-right">
+        <!-- 🔹 PROFILE PHOTO AREA – change src to your image file -->
+        <div class="photo-wrapper">
+          <div class="photo-inner">
+            <img
+              src="images/home-photo.png"
+              alt="Photo of Devakirubai"
+              class="profile-pic"
+            />
+          </div>
+        </div>
+
+        <div class="hero-small-card">
+          <p><strong>Location:</strong> Chennai – Poonamallee</p>
+          <p><strong>Phone:</strong> 8428881489</p>
+          <p><strong>Email:</strong> <a href="mailto:devakirubai.g@outlook.com">devakirubai.g@outlook.com</a></p>
+          <p><strong>GitHub:</strong> <a href="https://github.com/devakirubai14" target="_blank" rel="noreferrer">github.com/devakirubai14</a></p>
+          <p><strong>Education:</strong> B.Tech Information Technology (2022–2026), Kings Engineering College</p>
+        </div>
+      </aside>
+    </section>
+
+    <!-- ABOUT & SKILLS -->
+    <section class="section" id="about">
+      <h2 class="section-title">About & Skills</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>About Me</h3>
+          <p class="muted">
+            I'm an upcoming software engineer who enjoys building full-stack web applications and learning modern
+            technologies. I’ve worked on projects using <strong>React, Angular, Node.js, Express, Spring Boot,
+            MySQL, MongoDB</strong> and AI-based features. I love collaborating in teams, participating in hackathons,
+            and continuously sharpening my skills through real-world challenges.
+          </p>
+        </div>
+
+        <div class="card" id="skills">
+          <h3>Technical Skills</h3>
+          <p><strong>Frontend:</strong> React, Angular, HTML, CSS, JavaScript</p>
+          <p><strong>Backend:</strong> Node.js, Express.js, Spring Boot</p>
+          <p><strong>Databases:</strong> MongoDB, MySQL</p>
+          <p><strong>Tools:</strong> Git, GitHub, VS Code, Postman, IntelliJ</p>
+          <p><strong>Languages:</strong> Java, Python</p>
+          <div class="pill-row">
+            <span class="pill">REST APIs</span>
+            <span class="pill">CRUD Operations</span>
+            <span class="pill">Deployment</span>
+            <span class="pill">Data Structures & Algorithms</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
+      <h2 class="section-title">Projects</h2>
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="card project-card">
+          <h3>Shopping App</h3>
+          <p class="project-meta">React • Frontend • Deployed</p>
+          <p class="muted">
+            A responsive shopping interface built with React, focusing on clean UI, component-based architecture, and smooth user
+            experience. Optimized rendering and state handling for better performance.
+          </p>
+          <div class="project-links">
+            <a href="https://shoppingapp-react.netlify.app" target="_blank" rel="noreferrer">🔗 Live Demo</a>
+            <a href="https://github.com/devakirubai14" target="_blank" rel="noreferrer">💻 View on GitHub</a>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="card project-card">
+          <h3>AgriConnect – AI Farmer Advisory</h3>
+          <p class="project-meta">React • Spring Boot • MySQL • PyTorch</p>
+          <p class="muted">
+            Full-stack AI-based platform for farmers offering crop disease detection, weather insights, and community Q&A.
+            Built as part of Smart India Hackathon (SIH 2025) with focus on real-world impact and usability.
+          </p>
+          <div class="project-links">
+            <span>🧠 AI + Full Stack</span>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="card project-card">
+          <h3>Inventory Management System</h3>
+          <p class="project-meta">Angular • Spring Boot • MySQL</p>
+          <p class="muted">
+            A full-stack inventory and student management system with CRUD operations, secure data handling, and modular Angular
+            components integrating with a RESTful backend.
+          </p>
+          <div class="project-links">
+            <span>📦 CRUD • Full Stack</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE & ACHIEVEMENTS -->
+    <section class="section" id="experience">
+      <h2 class="section-title">Experience & Achievements</h2>
+      <div class="grid-2">
+        <!-- Experience -->
+        <div class="card">
+          <h3>Experience</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-title"><strong>Software Development Intern — Dexian</strong></div>
+              <div class="timeline-sub">Jun 2025 – Jul 2025</div>
+              <p class="muted">
+                Worked on full-stack development using React and Django; built real-time modules, integrated REST APIs, and used
+                GitHub workflows for version control and collaboration.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Achievements -->
+        <div class="card">
+          <h3>Achievements & Leadership</h3>
+          <ul class="muted" style="padding-left: 1.1rem; margin-top: 0.35rem;">
+            <li><strong>Smart India Hackathon (Sep 2024)</strong> – Secured 1st place in inter-college competition.</li>
+            <li><strong>Code Quiz Winner</strong> – 1st place in team coding quiz at college (Sep 2024).</li>
+            <li><strong>SkillAura Hub Coordinator</strong> – Organized 2+ student development programs on domains, communication, and technical skills, impacting 100–150 students.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <h2 class="section-title">Contact</h2>
+      <div class="card">
+        <p class="muted">
+          I'm open to <strong>internships, full-time roles, and collaboration</strong> on interesting web and SaaS projects.
+          If you think I might be a good fit for your team, feel free to reach out.
+        </p>
+        <div class="contact-links" style="margin-top: 0.75rem;">
+          <a href="mailto:devakirubai.g@outlook.com">📧 Email</a>
+          <a href="tel:+918428881489">📞 Call</a>
+          <a href="https://github.com/devakirubai14" target="_blank" rel="noreferrer">💻 GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="contact-links">
+      <span>📍 Chennai – Poonamallee</span>
+      <span>🌐 Languages: Tamil, English</span>
+    </div>
+    <div>© <span id="year"></span> Devakirubai G • Built with HTML & CSS</div>
+  </footer>
+
+  <script>
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
