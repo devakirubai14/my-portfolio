@@ -5,268 +5,466 @@
   <title>Devakirubai G | Full-Stack Developer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Portfolio of Devakirubai G, an upcoming full-stack developer skilled in MERN and MEAN stacks." />
-  <!-- Google Font (optional) -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-
   <style>
-    :root{
-      --bg:#05060b;
-      --glass: rgba(255,255,255,0.03);
-      --muted: #9aa3b2;
-      --text: #eef2ff;
-      --accent: #7c5cff;
-      --accent-2: #22d3ee;
-      --card: rgba(255,255,255,0.02);
-      --border: rgba(255,255,255,0.04);
-      --glass-2: rgba(255,255,255,0.02);
-      --shadow: 0 10px 30px rgba(2,6,23,0.7);
+    :root {
+      --bg: #020617;
+      --bg-alt: #020617;
+      --accent: #6366f1;
+      --accent-soft: rgba(99, 102, 241, 0.18);
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --card: #020617;
+      --card-alt: #020617;
+      --border: #1f2937;
     }
-
+    
     /* Reset */
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%}
-    body{
-      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-      background: radial-gradient(1200px 600px at 10% 10%, rgba(124,92,255,0.08), transparent 8%),
-                  radial-gradient(1000px 500px at 90% 80%, rgba(34,211,238,0.04), transparent 10%),
-                  linear-gradient(180deg,#020617 0%, #05060b 100%);
-      color:var(--text);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.5;
-      padding-bottom:4rem;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    html, body { height: 100%; }
+    
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, #111827 0, #020617 35%, #020617 100%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
-
-    a{color:var(--accent);text-decoration:none}
-    a:focus{outline:2px solid rgba(124,92,255,0.15);outline-offset:3px}
-
-    .container{max-width:1100px;margin:0 auto;padding:1.5rem}
-
-    /* Header */
-    header{position:sticky;top:0;z-index:60;background:linear-gradient(to bottom, rgba(2,6,23,0.72), rgba(2,6,23,0.4));backdrop-filter: blur(6px);border-bottom:1px solid var(--border)}
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:0.9rem 1rem}
-    .logo{font-weight:800;letter-spacing:0.14em;text-transform:uppercase;font-size:0.9rem;color:var(--muted)}
-    .logo span{color:var(--accent)}
-
-    /* Desktop nav */
-    .nav-links{display:flex;gap:1rem;align-items:center}
-    .nav-links a{color:var(--muted);padding:0.5rem 0.6rem;border-radius:10px;transition:color 150ms,background 150ms;font-weight:600}
-    .nav-links a:hover{color:var(--text);background:rgba(255,255,255,0.02)}
-
-    .menu-btn{display:none;border:0;background:transparent;color:var(--muted);font-size:1.2rem;padding:0.45rem;border-radius:8px}
-
+    
+    /* Links */
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    
+    /* Layout container */
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+    
+    /* HEADER / NAV */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(
+        to bottom,
+        rgba(2, 6, 23, 0.96),
+        rgba(2, 6, 23, 0.7)
+      );
+      border-bottom: 1px solid rgba(15,23,42,0.9);
+    }
+    
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.7rem 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    
+    .logo span { color: var(--accent); }
+    
+    /* Nav links row */
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.9rem;
+      align-items: center;
+    }
+    
+    .nav-links a { color: var(--muted); }
+    .nav-links a:hover { color: var(--text); }
+    
+    /* Provide a tappable area on mobile */
+    .nav-links a,
+    .logo {
+      padding: 0.35rem 0.55rem;
+      border-radius: 6px;
+    }
+    
     /* HERO */
-    .hero{display:grid;grid-template-columns:1fr 420px;gap:2.4rem;align-items:center;padding:3rem 0}
-
-    .hero-subtitle{font-size:0.85rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:0.9rem}
-    .hero-title{font-size:clamp(2.1rem,4vw,3rem);font-weight:800;line-height:1.02;margin-bottom:0.6rem}
-    .hero-title span{background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
-    .hero-text{color:var(--muted);font-size:1rem;max-width:48ch}
-
-    .hero-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin:1.15rem 0}
-    .tag{font-size:0.75rem;padding:0.35rem 0.7rem;border-radius:999px;border:1px solid var(--border);background:var(--glass);color:var(--muted)}
-
-    .cta-row{display:flex;gap:0.8rem;flex-wrap:wrap;margin-top:0.6rem}
-    .btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.65rem 1.2rem;border-radius:999px;border:1px solid transparent;font-weight:600;cursor:pointer}
-    .btn-primary{background:linear-gradient(110deg,var(--accent),#a78bfa);color:#fff;box-shadow:0 12px 30px rgba(99,102,241,0.18);transition:transform 120ms ease}
-    .btn-primary:hover{transform:translateY(-3px)}
-    .btn-ghost{background:transparent;border:1px solid var(--border);color:var(--muted)}
-
-    /* RIGHT column */
-    .hero-right{display:flex;flex-direction:column;gap:1rem;align-items:center}
-    .photo-wrapper{width:240px;height:240px;border-radius:999px;padding:6px;background:conic-gradient(from 90deg,var(--accent),#8b5cf6,#22d3ee);box-shadow:var(--shadow)}
-    .photo-inner{width:100%;height:100%;border-radius:inherit;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);display:flex;align-items:center;justify-content:center;overflow:hidden}
-    .profile-pic{width:100%;height:100%;object-fit:cover;border-radius:inherit;display:block;filter:saturate(1.05) contrast(1.03)}
-
-    .hero-small-card{margin-top:0.25rem;border-radius:14px;padding:0.85rem 1rem;background:linear-gradient(180deg,rgba(255,255,255,0.015),transparent);border:1px solid var(--border);width:100%;max-width:360px}
-    .hero-small-card p{color:var(--muted);font-size:0.95rem;margin:0.25rem 0}
-    .hero-small-card a{color:var(--accent-2)}
-
-    /* Sections */
-    .section{padding:2rem 0;border-top:1px solid var(--border)}
-    .section-title{font-size:0.95rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
-    .grid-2{display:grid;grid-template-columns:1fr 420px;gap:1.5rem;align-items:start}
-    .card{border-radius:14px;padding:1rem;background:var(--card);border:1px solid var(--border);box-shadow:0 8px 30px rgba(2,6,23,0.6)}
-    .card h3{font-size:1.05rem;margin-bottom:0.45rem}
-    .muted{color:var(--muted)}
-
-    .pill-row{display:flex;flex-wrap:wrap;gap:0.45rem;margin-top:0.6rem}
-    .pill{font-size:0.78rem;padding:0.36rem 0.6rem;border-radius:999px;background:transparent;border:1px solid var(--border);color:var(--muted)}
-
-    /* Projects grid */
-    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.15rem}
-    .project-card{overflow:hidden;transition:transform 180ms ease,box-shadow 180ms ease}
-    .project-card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(2,6,23,0.6)}
-    .project-meta{font-size:0.85rem;color:var(--muted);margin-bottom:0.5rem}
-    .project-links{margin-top:0.6rem;display:flex;gap:0.8rem;flex-wrap:wrap}
-
-    /* Timeline */
-    .timeline{border-left:2px solid rgba(124,92,255,0.12);padding-left:1rem;margin-left:0.25rem}
-    .timeline-item{position:relative;margin-bottom:1rem}
-    .timeline-item::before{content:"";position:absolute;left:-1.35rem;top:0.35rem;width:10px;height:10px;border-radius:999px;background:var(--accent);box-shadow:0 0 0 6px rgba(124,92,255,0.12)}
-    .timeline-title{font-weight:700}
-    .timeline-sub{color:var(--muted);font-size:0.9rem;margin-bottom:0.3rem}
-
-    /* Footer */
-    footer{padding:1.6rem 0;border-top:1px solid var(--border);color:var(--muted);text-align:center}
-
-    /* Mobile improvements */
-    /* - Make CTAs full-width on small screens
-       - Make nav a full-screen accessible overlay
-       - Increase touch target sizes
-       - Stack columns and reduce image size for performance */
-
-    /* Mobile nav overlay */
-    .mobile-nav-overlay{position:fixed;inset:0;background:linear-gradient(180deg,rgba(2,6,23,0.98),rgba(2,6,23,0.96));backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;z-index:80}
-    .mobile-nav-overlay.open{display:flex}
-    .mobile-nav-list{display:flex;flex-direction:column;gap:1.1rem;align-items:center}
-    .mobile-nav-list a{font-size:1.1rem;padding:0.9rem 1.6rem;border-radius:10px;color:var(--text);width:100%;text-align:center}
-
-    @media (max-width:1100px){
-      .hero{grid-template-columns:1fr 360px}
-      .grid-2{grid-template-columns:1fr 300px}
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 2.5rem;
+      align-items: center;
+      padding: 3.2rem 0 2.2rem;
     }
-
-    @media (max-width:900px){
-      .hero{grid-template-columns:1fr;gap:1.4rem;padding:1.75rem 0}
-      .hero-right{order:-1;flex-direction:row;justify-content:space-between;align-items:center}
-      .photo-wrapper{width:140px;height:140px}
-      .hero-small-card{max-width:220px}
-      .grid-2{grid-template-columns:1fr}
-
-      /* use mobile menu */
-      .menu-btn{display:inline-flex}
-      .nav-links{display:none}
-
-      /* CTA adjustments on small screens */
-      .cta-row{flex-direction:column;align-items:stretch}
-      .btn{width:100%;justify-content:center}
-      .btn-primary{padding:0.85rem 1rem;font-size:1rem}
-      .btn-ghost{padding:0.75rem 1rem}
-
-      /* make project cards a single column on narrow phones */
-      .projects-grid{grid-template-columns:1fr}
-
-      /* increase touch areas for contact links */
-      .contact-links a{padding:0.6rem 0.85rem;border-radius:10px;background:transparent;display:inline-block}
+    
+    .hero-subtitle {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      margin-bottom: 1rem;
     }
-
-    @media (max-width:600px){
-      .container{padding:1rem}
-      .photo-wrapper{width:112px;height:112px}
-      .hero-title{font-size:1.6rem}
-      .hero-text{font-size:0.98rem}
-
-      /* compact hero spacing */
-      .hero-subtitle{margin-bottom:0.6rem}
-      .hero-tags{gap:0.4rem}
-
-      /* stack hero-right under hero content for easier reading*/
-      .hero-right{width:100%;justify-content:flex-start}
-      .hero-small-card{width:100%;max-width:none}
-
-      /* spacing adjustments for smaller screens */
-      .card{padding:0.9rem}
-      .section{padding:1.4rem 0}
+    
+    .hero-title {
+      font-size: clamp(2.1rem, 3.6vw, 2.9rem);
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      line-height: 1.05;
     }
+    
+    .hero-title span { color: var(--accent); }
+    
+    .hero-text {
+      color: var(--muted);
+      font-size: 0.98rem;
+      max-width: 34rem;
+    }
+    
+    /* tags & cta */
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1.25rem 0 1.75rem;
+    }
+    
+    .tag {
+      font-size: 0.75rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(15,23,42,0.85);
+      color: var(--muted);
+    }
+    
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+    
+    .btn {
+      padding: 0.65rem 1.4rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      text-decoration: none;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, border-color 0.12s ease;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: white;
+      box-shadow: 0 12px 30px rgba(79,70,229,0.45);
+    }
+    
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 18px 38px rgba(79,70,229,0.6); }
+    
+    .btn-ghost {
+      border-color: var(--border);
+      background: rgba(15,23,42,0.85);
+      color: var(--muted);
+    }
+    
+    .btn-ghost:hover {
+      background: rgba(15,23,42,1);
+      color: var(--text);
+      border-color: rgba(55,65,81,1);
+    }
+    
+    /* HERO RIGHT: PHOTO + CARD */
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    /* Profile picture styling */
+    .photo-wrapper {
+      position: relative;
+      width: 220px;
+      height: 220px;
+      border-radius: 999px;
+      padding: 3px;
+      background: conic-gradient(from 160deg, #6366f1, #8b5cf6, #22d3ee, #6366f1);
+      box-shadow: 0 18px 40px rgba(15,23,42,0.95);
+    }
+    
+    .photo-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      background: radial-gradient(circle at top, #020617, #020617);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    
+    .profile-pic {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+      filter: saturate(1.05) contrast(1.05);
+    }
+    
+    /* small info card next to photo */
+    .hero-small-card {
+      border-radius: 1rem;
+      border: 1px solid var(--border);
+      background: radial-gradient(circle at top left, var(--accent-soft), var(--card));
+      padding: 0.9rem 1.1rem;
+      font-size: 0.85rem;
+      width: 100%;
+      max-width: 300px;
+    }
+    
+    .hero-small-card p { color: var(--muted); }
+    .hero-small-card strong { color: var(--text); }
+    
+    /* SECTIONS */
+    .section {
+      padding: 2.4rem 0 1.3rem;
+      border-top: 1px solid rgba(15,23,42,0.9);
+    }
+    
+    .section-title {
+      font-size: 1.05rem;
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    
+    /* Two-column grid for content */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.4fr);
+      gap: 1.5rem;
+    }
+    
+    /* Cards */
+    .card {
+      border-radius: 1rem;
+      border: 1px solid var(--border);
+      background: var(--card-alt);
+      padding: 1rem 1.2rem;
+      font-size: 0.9rem;
+      box-shadow: 0 18px 45px rgba(15,23,42,0.9);
+    }
+    
+    .card h3 { font-size: 1rem; margin-bottom: 0.4rem; }
+    .muted { color: var(--muted); }
+    
+    /* pills */
+    .pill-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.55rem; }
+    .pill {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.95);
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+    
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem;
+    }
+    
+    .project-card h3 { font-size: 1rem; margin-bottom: 0.25rem; }
+    .project-meta { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.45rem; }
+    .project-links { margin-top: 0.5rem; font-size: 0.8rem; display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    
+    /* TIMELINE */
+    .timeline {
+      border-left: 1px solid var(--border);
+      padding-left: 1rem;
+      margin-left: 0.25rem;
+    }
+    
+    .timeline-item { margin-bottom: 0.9rem; position: relative; }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -1.15rem;
+      top: 0.25rem;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(99,102,241,0.25);
+    }
+    
+    .timeline-title { font-size: 0.95rem; }
+    .timeline-sub { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.25rem; }
+    
+    /* CONTACT / FOOTER */
+    footer {
+      padding: 1.75rem 0 2.25rem;
+      border-top: 1px solid rgba(15,23,42,1);
+      color: var(--muted);
+      font-size: 0.85rem;
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+    
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+    
+    /* ======================
+       RESPONSIVE RULES
+       ====================== */
+    
+    /* Large tablets / small laptops */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; padding-top: 2.6rem; }
+      .hero-right { order: -1; width: 100%; align-items: center; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .photo-wrapper { margin: 0 auto; width: 180px; height: 180px; }
+      .hero-small-card { max-width: 360px; }
+      .hero-text { max-width: 100%; }
+      .projects-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+    }
+    
+    /* Mobile & small tablets */
+    @media (max-width: 600px) {
+      .nav-links { display: none; }            /* keep original behavior; optionally add mobile menu later */
+      .container { padding: 1.1rem; }
+    
+      /* Hero spacing & type sizes */
+      .hero { padding: 1.8rem 0 1rem; gap: 1.2rem; }
+      .hero-title { font-size: clamp(1.6rem, 6.4vw, 2.2rem); }
+      .hero-subtitle { font-size: 0.78rem; letter-spacing: 0.12em; }
+      .hero-text { font-size: 0.94rem; }
+    
+      /* Make buttons full-width stack for easy tap */
+      .cta-row { flex-direction: column; width: 100%; }
+      .cta-row .btn { width: 100%; justify-content: center; padding: 0.75rem; font-size: 0.96rem; }
+    
+      /* Photo smaller */
+      .photo-wrapper { width: 150px; height: 150px; padding: 2px; }
+      .hero-small-card { width: 100%; padding: 0.85rem; font-size: 0.85rem; }
+    
+      /* Cards & timeline spacing */
+      .card { padding: 0.9rem; border-radius: 12px; }
+      .timeline { padding-left: 0.9rem; margin-left: 0; border-left-width: 2px; }
+      .timeline-item::before { left: -1.35rem; transform: translateX(0); }
+    
+      /* Reduce project card padding and stack */
+      .project-card { padding: 0.9rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+    
+    /* Small phones */
+    @media (max-width: 480px) {
+      .logo { font-size: 0.78rem; }
+      .hero-title { font-size: 1.9rem; }
+      .hero-subtitle { font-size: 0.72rem; }
+      .hero-text { font-size: 0.9rem; }
+    
+      .photo-wrapper { width: 128px; height: 128px; }
+      .hero-small-card { font-size: 0.82rem; padding: 0.75rem; }
+    
+      /* Make nav logo area slightly padded for touch */
+      .nav { padding: 0.6rem 0.9rem; }
+    
+      /* Tappable footers and contact links */
+      .contact-links a, .contact-links span { padding: 0.3rem 0.6rem; display: inline-block; }
+    }
+    
+    /* Very small screens (old phones / very narrow) */
+    @media (max-width: 360px) {
+      .container { padding-left: 0.9rem; padding-right: 0.9rem; }
+      .hero-title { font-size: 1.7rem; line-height: 1.02; }
+      .profile-pic { object-position: center top; }
+      .btn { font-size: 0.92rem; padding: 0.6rem 0.9rem; }
+    }
+    
+    /* Accessibility: focus states */
+    a:focus, .btn:focus {
+      outline: 3px solid rgba(99,102,241,0.2);
+      outline-offset: 3px;
+      border-radius: 8px;
+    }
+    
+    /* Image responsiveness (fallback) */
+    img { max-width: 100%; height: auto; display: block; }
+    
+    /* Reduce heavy shadows on low-power devices */
+    @media (prefers-reduced-motion: reduce) {
+      .btn { transition: none; }
+      * { transition: none !important; animation: none !important; }
+    }
+    /* --- Subtle "shaky" animation for profile image --- */
+.profile-pic {
+  /* keep your existing rules */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  filter: saturate(1.05) contrast(1.05);
 
-    /* subtle floating animation for background accent */
-    @keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
-    .photo-wrapper{animation:floaty 6s ease-in-out infinite}
-
-    /* ===== Mobile / small screens (replace your current @media 900 & 600 rules) ===== */
-
-/* accessible helper */
-.sr-only{
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-  border: 0;
+  /* shake settings */
+  animation: subtle-shake 2.6s infinite ease-in-out;
+  will-change: transform;
+  transform-origin: center center;
+  /* reduce motion for performance on low-end devices */
+  backface-visibility: hidden;
 }
 
-/* Base mobile layout adjustments */
-@media (max-width: 900px) {
-  /* stack hero, text first then photo/card */
-  .hero {
-    display: block;
-    padding: 1.6rem 0;
-    gap: 1.15rem;
-  }
-  .hero > div { /* left column content */
-    margin-bottom: 1rem;
-  }
-
-  /* move the right column (photo + card) under the main content */
-  .hero-right {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 0.85rem;
-    margin-top: 0.6rem;
-    order: 2;
-    width: 100%;
-  }
-  .photo-wrapper {
-    width: 96px;
-    height: 96px;
-    padding: 4px;
-  }
-  .photo-inner { border-radius: 999px; overflow: hidden; }
-  .profile-pic { width: 88px; height: 88px; object-fit: cover; }
-
-  /* hero text sizing for phones */
-  .hero-title { font-size: 1.6rem; line-height: 1.08; margin-bottom: 0.45rem; }
-  .hero-text { font-size: 0.98rem; color: var(--muted); max-width: 100%; }
-
-  /* CTAs full width, bigger touch targets */
-  .cta-row { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 0.8rem; }
-  .btn { width: 100%; padding: 0.9rem; font-size: 1rem; border-radius: 12px; }
-  .btn-primary { justify-content: center; }
-  .btn-ghost { justify-content: center; }
-
-  /* nav => hamburger */
-  .menu-btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.6rem 0.9rem; }
-  .nav-links { display: none; }
-
-  /* Mobile nav overlay style adjustments */
-  .mobile-nav-overlay { padding: 1.5rem; }
-  .mobile-nav-list a { width: 100%; display: block; border-radius: 12px; text-align: center; background: transparent; padding: 0.9rem 1.2rem; font-weight: 700; }
-
-  /* projects single column on phones */
-  .projects-grid { grid-template-columns: 1fr; gap: 0.9rem; }
-
-  /* grid-2 becomes single column */
-  .grid-2 { grid-template-columns: 1fr; gap: 0.9rem; }
-
-  /* small card next to photo stacks vertically on very small widths */
-  .hero-small-card { max-width: none; flex: 1; }
-
-  /* increase spacing on contact links for tap targets */
-  .contact-links a { padding: 0.7rem 0.9rem; border-radius: 10px; display: inline-block; }
-
-  /* reduce heavy shadows on mobile for better render performance */
-  .card, .project-card { box-shadow: none; border: 1px solid var(--border); }
-
-  /* reduce text truncation */
-  .project-meta, .muted { font-size: 0.95rem; }
-
-  /* ensure footer looks OK */
-  footer { padding: 1.2rem 0; font-size: 0.95rem; }
+/* gentle pause when user hovers (so they can view the image steady) */
+.photo-inner:hover .profile-pic,
+.photo-wrapper:focus-within .profile-pic {
+  animation-play-state: paused;
+  transform: none;
 }
 
-/* Extra compact tweaks for very small phones */
-@media (max-width: 420px) {
-  .photo-wrapper { width: 80px; height: 80px; padding: 3px; }
-  .profile-pic { width: 74px; height: 74px; }
-  .hero-title { font-size: 1.4rem; }
-  .hero-subtitle { font-size: 0.72rem; letter-spacing: 0.12em; }
-  .btn { padding: 0.85rem; font-size: 0.95rem; }
-  .mobile-nav-list a { font-size: 1rem; padding: 0.9rem; }
+/* keyframes: small translate + rotate for natural effect */
+@keyframes subtle-shake {
+  0%   { transform: translateY(0px) rotate(0deg); }
+  20%  { transform: translateY(-1.5px) rotate(-0.45deg); }
+  40%  { transform: translateY(1px) rotate(0.35deg); }
+  60%  { transform: translateY(-1px) rotate(-0.25deg); }
+  80%  { transform: translateY(0.8px) rotate(0.2deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+/* Accessibility: respect user's reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .profile-pic {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Optional: make the animation slightly faster on small screens for effect balance */
+@media (max-width: 600px) {
+  .profile-pic {
+    animation-duration: 2.2s;
+  }
 }
 
   </style>
@@ -274,12 +472,9 @@
 <body>
   <!-- NAVBAR -->
   <header>
-    <nav class="nav container" aria-label="Main navigation">
+    <nav class="nav">
       <div class="logo">DEVAKI<span>RUBAI</span></div>
-
-      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileNav">☰ <span class="sr-only">Open menu</span></button>
-
-      <div class="nav-links" id="navLinks">
+      <div class="nav-links">
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
@@ -287,18 +482,6 @@
         <a href="#contact">Contact</a>
       </div>
     </nav>
-
-    <!-- Mobile nav overlay -->
-    <div id="mobileNav" class="mobile-nav-overlay" aria-hidden="true">
-      <div class="mobile-nav-list" role="menu" aria-label="Mobile menu">
-        <a href="#about" role="menuitem">About</a>
-        <a href="#skills" role="menuitem">Skills</a>
-        <a href="#projects" role="menuitem">Projects</a>
-        <a href="#experience" role="menuitem">Experience</a>
-        <a href="#contact" role="menuitem">Contact</a>
-        <button id="closeMenu" style="margin-top:0.6rem;padding:0.6rem 1rem;border-radius:10px;background:transparent;border:1px solid var(--border);color:var(--muted)">Close</button>
-      </div>
-    </div>
   </header>
 
   <main class="container">
@@ -331,7 +514,7 @@
       </div>
 
       <!-- RIGHT SIDE: PHOTO + CARD -->
-      <aside class="hero-right" aria-hidden="false">
+      <aside class="hero-right">
         <!-- 🔹 PROFILE PHOTO AREA – change src to your image file -->
         <div class="photo-wrapper">
           <div class="photo-inner">
@@ -339,7 +522,6 @@
               src="images/home-photo.png"
               alt="Photo of Devakirubai"
               class="profile-pic"
-              loading="lazy"
             />
           </div>
         </div>
@@ -470,7 +652,7 @@
           I'm open to <strong>internships, full-time roles, and collaboration</strong> on interesting web and SaaS projects.
           If you think I might be a good fit for your team, feel free to reach out.
         </p>
-        <div class="contact-links" style="margin-top: 0.75rem;display:flex;gap:1rem;flex-wrap:wrap">
+        <div class="contact-links" style="margin-top: 0.75rem;">
           <a href="mailto:devakirubai.g@outlook.com">📧 Email</a>
           <a href="tel:+918428881489">📞 Call</a>
           <a href="https://github.com/devakirubai14" target="_blank" rel="noreferrer">💻 GitHub</a>
@@ -480,66 +662,16 @@
   </main>
 
   <footer>
-    <div class="contact-links" style="display:flex;justify-content:center;gap:1.5rem;margin-bottom:0.5rem">
+    <div class="contact-links">
       <span>📍 Chennai – Poonamallee</span>
       <span>🌐 Languages: Tamil, English</span>
     </div>
-    <div>© <span id="year"></span> Devakirubai G • Built with HTML &amp; CSS</div>
+    <div>© <span id="year"></span> Devakirubai G • Built with HTML & CSS</div>
   </footer>
 
   <script>
     // Set current year in footer
     document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Mobile menu toggle (overlay)
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileNav = document.getElementById('mobileNav');
-    const closeMenu = document.getElementById('closeMenu');
-
-    function openMobileNav(){
-      mobileNav.classList.add('open');
-      mobileNav.setAttribute('aria-hidden','false');
-      menuBtn.setAttribute('aria-expanded', 'true');
-      // prevent body scroll when menu open
-      document.body.style.overflow = 'hidden';
-    }
-    function closeMobileNav(){
-      mobileNav.classList.remove('open');
-      mobileNav.setAttribute('aria-hidden','true');
-      menuBtn.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    }
-
-    menuBtn.addEventListener('click', ()=>{
-      const open = mobileNav.classList.toggle('open');
-      if(open) openMobileNav(); else closeMobileNav();
-    });
-    closeMenu && closeMenu.addEventListener('click', closeMobileNav);
-
-    // Close mobile nav when clicking any internal link
-    document.querySelectorAll('#mobileNav a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', ()=>{ closeMobileNav(); });
-    });
-
-    // Smooth scroll for internal links (enhanced UX)
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        const href = a.getAttribute('href');
-        if(href.length>1){
-          e.preventDefault();
-          document.querySelector(href).scrollIntoView({behavior:'smooth',block:'start'});
-          // close mobile nav after click
-          closeMobileNav();
-        }
-      })
-    })
-
-    // Accessible escape key handler to close mobile nav
-    document.addEventListener('keydown', (e)=>{
-      if(e.key === 'Escape' && mobileNav.classList.contains('open')){
-        closeMobileNav();
-      }
-    });
   </script>
 </body>
 </html>
